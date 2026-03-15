@@ -1,1 +1,108 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Mono:wght@400;500&family=Lato:wght@300;400;700&display=swap");
+
+/* ─── Theme Tokens (inline = utilities reference var(), enabling runtime overrides) ── */
+@theme inline {
+  /* Backgrounds */
+  --color-base:   var(--base);
+  --color-panel:  var(--panel);
+  --color-panel2: var(--panel2);
+
+  /* Borders */
+  --color-rim:  var(--rim);
+  --color-rim2: var(--rim2);
+
+  /* Text tiers */
+  --color-ink:  var(--ink);
+  --color-ink2: var(--ink2);
+  --color-ink3: var(--ink3);
+
+  /* Macros */
+  --color-kcal:    var(--kcal);
+  --color-protein: var(--protein);
+  --color-carbs:   var(--carbs);
+  --color-fat:     var(--fat);
+
+  /* Brand */
+  --color-accent: var(--accent);
+
+  /* Fonts */
+  --font-sans:  'Lato', system-ui, sans-serif;
+  --font-mono:  'DM Mono', 'Courier New', monospace;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+/* ─── Light Theme (default) ─────────────────────────────────────────────────── */
+:root {
+  --base:   #faf6f1;
+  --panel:  #f2e8dc;
+  --panel2: #ece0d2;
+  --rim:    #d8c8b4;
+  --rim2:   #e8ddd0;
+
+  --ink:  #1c1209;
+  --ink2: #6b4f38;
+  --ink3: #a8836a;
+
+  --kcal:    #9a6800;
+  --protein: #1c7a18;
+  --carbs:   #105aaa;
+  --fat:     #a83018;
+  --accent:  #c9784e;
+
+  /* Per-meal accent colors */
+  --meal-amber:   #b87018;
+  --meal-emerald: #1e8a1a;
+  --meal-indigo:  #1468bc;
+  --meal-orange:  #b84820;
+  --meal-violet:  #7048c8;
+  --meal-slate:   #4a6880;
+}
+
+/* ─── Dark Theme ─────────────────────────────────────────────────────────────── */
+@layer base {
+  .dark {
+    --base:   #0d0a07;
+    --panel:  #181210;
+    --panel2: #1f1710;
+    --rim:    #382819;
+    --rim2:   #231a10;
+
+    --ink:  #f0e6d8;
+    --ink2: #9b7d60;
+    --ink3: #52382a;
+
+    --kcal:    #e8a54e;
+    --protein: #7dcc78;
+    --carbs:   #6db5ea;
+    --fat:     #e87c5c;
+    --accent:  #c9784e;
+
+    --meal-amber:   #e8a54e;
+    --meal-emerald: #7dcc78;
+    --meal-indigo:  #6db5ea;
+    --meal-orange:  #e87c5c;
+    --meal-violet:  #a87de8;
+    --meal-slate:   #7e96a8;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background-color: var(--base);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────────── */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.meal-detail { animation: slideDown 0.16s ease-out; }
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--base); }
+::-webkit-scrollbar-thumb { background: var(--rim); border-radius: 2px; }
