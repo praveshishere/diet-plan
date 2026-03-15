@@ -32,35 +32,34 @@
   --font-serif: 'Playfair Display', Georgia, serif;
 }
 
-/* ─── Light Theme (default) ─────────────────────────────────────────────────── */
-:root {
-  --base:   #faf6f1;
-  --panel:  #f2e8dc;
-  --panel2: #ece0d2;
-  --rim:    #d8c8b4;
-  --rim2:   #e8ddd0;
-
-  --ink:  #1c1209;
-  --ink2: #6b4f38;
-  --ink3: #a8836a;
-
-  --kcal:    #9a6800;
-  --protein: #1c7a18;
-  --carbs:   #105aaa;
-  --fat:     #a83018;
-  --accent:  #c9784e;
-
-  /* Per-meal accent colors */
-  --meal-amber:   #b87018;
-  --meal-emerald: #1e8a1a;
-  --meal-indigo:  #1468bc;
-  --meal-orange:  #b84820;
-  --meal-violet:  #7048c8;
-  --meal-slate:   #4a6880;
-}
-
-/* ─── Dark Theme ─────────────────────────────────────────────────────────────── */
+/* ─── Themes ─────────────────────────────────────────────────────────────────── */
 @layer base {
+  :root {
+    --base:   #faf6f1;
+    --panel:  #f2e8dc;
+    --panel2: #ece0d2;
+    --rim:    #d8c8b4;
+    --rim2:   #e8ddd0;
+
+    --ink:  #1c1209;
+    --ink2: #6b4f38;
+    --ink3: #a8836a;
+
+    --kcal:    #9a6800;
+    --protein: #1c7a18;
+    --carbs:   #105aaa;
+    --fat:     #a83018;
+    --accent:  #c9784e;
+
+    /* Per-meal accent colors */
+    --meal-amber:   #b87018;
+    --meal-emerald: #1e8a1a;
+    --meal-indigo:  #1468bc;
+    --meal-orange:  #b84820;
+    --meal-violet:  #7048c8;
+    --meal-slate:   #4a6880;
+  }
+
   .dark {
     --base:   #0d0a07;
     --panel:  #181210;
