@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useTheme } from "next-themes"
 
 /* ─── Data ───────────────────────────────────────────────────────────────────── */
 const meals = [
@@ -110,24 +111,10 @@ const totalKcal = totals.p * 4 + totals.c * 4 + totals.f * 9;
 /* ─── Component ──────────────────────────────────────────────────────────────── */
 export default function DietPlan() {
   const [open, setOpen] = useState<number | null>(null);
-  const [dark, setDark] = useState(() =>
-    typeof window !== "undefined"
-      ? document.documentElement.classList.contains("dark") ||
-        (!localStorage.getItem("theme") &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      : true
-  );
 
-  useEffect(() => {
-    const root = document.documentElement;
-    if (dark) {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [dark]);
+  const { setTheme, theme } = useTheme()
+
+  const dark = theme === "dark";
 
   return (
     <div className="min-h-screen bg-base text-ink font-sans px-5 py-8 max-w-[480px] mx-auto">
@@ -144,7 +131,7 @@ export default function DietPlan() {
           </h1>
           {/* Dark / Light toggle */}
           <button
-            onClick={() => setDark(d => !d)}
+            onClick={() => setTheme(dark ? "light" : "dark")}
             aria-label="Toggle theme"
             className="mt-1 w-8 h-8 rounded-full bg-panel border border-rim2 flex items-center justify-center text-ink2 hover:text-ink hover:border-rim transition-colors cursor-pointer"
           >
