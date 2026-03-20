@@ -190,11 +190,11 @@ export default function DietPlan() {
           return (
             <div
               key={i}
-              className={`relative pl-[46px] ${i < meals.length - 1 ? "mb-3.5" : ""}`}
+              className="relative pl-11.5 not-last:mb-3.5"
             >
               {/* Timeline dot */}
               <div
-                className="absolute left-[9px] top-[14px] size-[18px] rounded-full flex items-center justify-center bg-base transition-shadow duration-200"
+                className="absolute left-2.25 top-3.5 size-4.5 rounded-full flex items-center justify-center bg-base transition-shadow duration-200"
                 style={{
                   border: `1.5px solid ${color}`,
                   boxShadow: isOpen ? `0 0 8px color-mix(in srgb, ${color} 45%, transparent)` : "none",
