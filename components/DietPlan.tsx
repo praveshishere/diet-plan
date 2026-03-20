@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 /* ─── Data ───────────────────────────────────────────────────────────────────── */
@@ -86,7 +88,7 @@ const tips = [
 /* ─── Types & helpers ────────────────────────────────────────────────────────── */
 type Accent = "amber" | "emerald" | "indigo" | "orange" | "violet" | "slate";
 
-// CSS variables defined in index.css — one per meal accent, override in .dark
+// CSS variables defined in globals.css — one per meal accent, override in .dark
 const accentVar: Record<Accent, string> = {
   amber:   "var(--meal-amber)",
   emerald: "var(--meal-emerald)",
