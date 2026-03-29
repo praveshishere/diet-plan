@@ -1,11 +1,21 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
+import { createClient } from "@/lib/supabase/client";
 
 export default function Header() {
   const { setTheme, resolvedTheme } = useTheme();
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
+
+  async function handleLogout() {
+    const supabase = createClient()
+    await supabase.auth.signOut()
+    router.push("/login")
+    router.refresh()
+  }
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { setMounted(true) }, []);
 
@@ -27,6 +37,13 @@ export default function Header() {
           className="mt-1 w-8 h-8 rounded-full bg-panel border border-rim2 flex items-center justify-center text-ink2 hover:text-ink hover:border-rim transition-colors cursor-pointer"
         >
           <span className="text-sm leading-none">{mounted ? (dark ? "☀️" : "🌙") : "🌙"}</span>
+        </button>
+        <button
+          onClick={handleLogout}
+          aria-label="Sign out"
+          className="mt-1 w-8 h-8 rounded-full bg-panel border border-rim2 flex items-center justify-center text-ink3 hover:text-fat hover:border-rim transition-colors cursor-pointer"
+        >
+          <span className="text-xs leading-none">⎋</span>
         </button>
       </div>
 
