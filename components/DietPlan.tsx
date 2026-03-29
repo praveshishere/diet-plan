@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "next-themes"
 
 /* ─── Data ───────────────────────────────────────────────────────────────────── */
@@ -112,9 +112,12 @@ const totalKcal = totals.p * 4 + totals.c * 4 + totals.f * 9;
 export default function DietPlan() {
   const [open, setOpen] = useState<number | null>(null);
 
-  const { setTheme, theme } = useTheme()
+  const { setTheme, resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => { setMounted(true) }, [])
 
-  const dark = theme === "dark";
+  const dark = resolvedTheme === "dark";
 
   return (
     <div className="min-h-screen bg-base text-ink font-sans px-5 py-8 max-w-[480px] mx-auto">
@@ -135,7 +138,7 @@ export default function DietPlan() {
             aria-label="Toggle theme"
             className="mt-1 w-8 h-8 rounded-full bg-panel border border-rim2 flex items-center justify-center text-ink2 hover:text-ink hover:border-rim transition-colors cursor-pointer"
           >
-            <span className="text-sm leading-none">{dark ? "☀️" : "🌙"}</span>
+            <span className="text-sm leading-none">{mounted ? (dark ? "☀️" : "🌙") : "🌙"}</span>
           </button>
         </div>
 
